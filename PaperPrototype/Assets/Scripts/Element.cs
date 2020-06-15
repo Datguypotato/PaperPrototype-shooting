@@ -4,8 +4,23 @@ using UnityEngine;
 
 public class Element : MonoBehaviour
 {
-    public int water;
-    public int nature;
-    public int fire;
-    
+    public GameObject fireParticle;
+
+    public GameObject vineObject;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+            StartCoroutine(burnDown());
+    }
+
+    IEnumerator burnDown()
+    {
+        fireParticle.SetActive(true);
+
+        yield return new WaitForSeconds(2);
+
+        fireParticle.SetActive(false);
+        vineObject.SetActive(false);
+    }
 }
